@@ -8,8 +8,8 @@ import HolyLoader from "holy-loader";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "SXRMD OFFICIAL",
-  description: "Elevating Fashion to Ethereal Heights💎",
+  title: "SITARA FASHION",
+  description: "WE CARE WHAT YOU WEAR",
 };
 
 export const viewport: Viewport = {

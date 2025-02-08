@@ -13,6 +13,7 @@ import Image from "next/image";
 import InputGroup from "@/components/ui/input-group";
 import ResTopNavbar from "./ResTopNavbar";
 import CartBtn from "./CartBtn";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const data: NavMenu = [
   {
@@ -77,14 +78,23 @@ const TopNavbar = () => {
           <div className="block md:hidden mr-4">
             <ResTopNavbar data={data} />
           </div>
-          <Link
+          {/* <Link
             href="/"
             className={cn([
               integralCF.className,
               "text-2xl lg:text-[32px] mb-2 mr-3 lg:mr-10",
             ])}
           >
-            SHOP.CO
+            SITARA FASHION HOUSE
+          </Link> */}
+          <Link href="/">
+            <Image
+              src="/images/logo.jpeg"
+              alt="Sitara Fashion House Logo"
+              width={100}
+              height={100}
+              // className="w-auto h-auto mb-2 mr-3 lg:mr-10"
+            />
           </Link>
         </div>
         <NavigationMenu className="hidden md:flex mr-2 lg:mr-7">
@@ -131,16 +141,23 @@ const TopNavbar = () => {
             />
           </Link>
           <CartBtn />
-          <Link href="/#signin" className="p-1">
-            <Image
-              priority
-              src="/icons/user.svg"
-              height={100}
-              width={100}
-              alt="user"
-              className="max-w-[22px] max-h-[22px]"
-            />
-          </Link>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <button className="p-1">
+                <Image
+                  priority
+                  src="/icons/user.svg"
+                  height={22}
+                  width={22}
+                  alt="Sign in"
+                  className="max-w-[22px] max-h-[22px]"
+                />
+              </button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </div>
       </div>
     </nav>

@@ -6,9 +6,10 @@ import TopNavbar from "@/components/layout/Navbar/TopNavbar";
 import Footer from "@/components/layout/Footer";
 import HolyLoader from "holy-loader";
 import Providers from "./providers";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
-  title: "SITARA FASHION",
+  title: "SITARA FASHION HOUSE",
   description: "WE CARE WHAT YOU WEAR",
 };
 
@@ -22,16 +23,43 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={satoshi.className}>
-        <HolyLoader color="#868686" />
-        <TopBanner />
-        <Providers>
-          <TopNavbar />
-          {children}
-        </Providers>
-        <Footer />
-      </body>
-    </html>
+    // <ClerkProvider>
+    //   <html lang="en">
+    //     <body className={satoshi.className}>
+    //       <HolyLoader color="#868686" />
+    //       <TopBanner />
+    //       <Providers>
+    //         <TopNavbar />
+    //         {children}
+    //       </Providers>
+    //       <Footer />
+    //     </body>
+    //   </html>
+    // </ClerkProvider>
+
+    <ClerkProvider afterSignInUrl="/" afterSignUpUrl="/">
+      <html lang="en">
+        <body className={satoshi.className}>
+          <HolyLoader color="#868686" />
+          <TopBanner />
+          <Providers>
+            <TopNavbar />
+            
+            {/* Clerk Authentication */}
+            {/* <div className="flex justify-end p-4">
+              <SignedOut>
+                <SignInButton mode="modal" />
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </div> */}
+
+            {children}
+          </Providers>
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

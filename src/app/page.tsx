@@ -1,3 +1,7 @@
+
+
+
+import { getApiProducts } from "@/components/apiData/apiProducts";
 import ProductListSec from "@/components/common/ProductListSec";
 import Brands from "@/components/homepage/Brands";
 import DressStyle from "@/components/homepage/DressStyle";
@@ -162,22 +166,22 @@ export const relatedProductData: Product[] = [
 export const reviewsData: Review[] = [
   {
     id: 1,
-    user: "Alex K.",
+    user: "Ethan R.",
     content:
-      '"Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.”',
+      '"Finding clothes that align with my personal style used to be a challenge until I discovered Sxrmd Official. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.”',
     rating: 5,
     date: "August 14, 2023",
   },
   {
     id: 2,
     user: "Sarah M.",
-    content: `"I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”`,
+    content: `"I'm blown away by the quality and style of the clothes I received from Sxrmd Official. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”`,
     rating: 5,
     date: "August 15, 2023",
   },
   {
     id: 3,
-    user: "Ethan R.",
+    user: "Sarmad Ali.",
     content: `"This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt."`,
     rating: 5,
     date: "August 16, 2023",
@@ -205,23 +209,40 @@ export const reviewsData: Review[] = [
   },
 ];
 
-export default function Home() {
+
+  // Fetch the API products from Sanity
+
+
+  export default async function Home() {
+    // Fetch the API products from Sanity
+    const apiProducts = await getApiProducts();
+  
   return (
     <>
       <Header />
       <Brands />
       <main className="my-[50px] sm:my-[72px]">
+        
+      <ProductListSec
+          title="Api Products"
+          data={apiProducts}
+          viewAllLink="/shop#api-products"
+        />
+
         <ProductListSec
           title="NEW ARRIVALS"
           data={newArrivalsData}
           viewAllLink="/shop#new-arrivals"
         />
+       
+                 {/* line break */}
         <div className="max-w-frame mx-auto px-4 xl:px-0">
-          <hr className="h-[1px] border-t-black/10 my-10 sm:my-16" />
+          <hr className="h-[1px] border-t-black/10 my-10 sm:my-16" /> 
         </div>
+
         <div className="mb-[50px] sm:mb-20">
           <ProductListSec
-            title="top selling"
+            title="TOP SELLING"
             data={topSellingData}
             viewAllLink="/shop#top-selling"
           />
@@ -234,5 +255,3 @@ export default function Home() {
     </>
   );
 }
-
-

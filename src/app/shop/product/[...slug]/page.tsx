@@ -50,7 +50,7 @@ import {
   newArrivalsData,
   relatedProductData,
   topSellingData,
-} from "@/app/page";
+} from "../../../page";
 import { getApiProducts } from "@/components/apiData/apiProducts";
 import ProductListSec from "@/components/common/ProductListSec";
 import BreadcrumbProduct from "@/components/product-page/BreadcrumbProduct";
@@ -77,7 +77,8 @@ export default async function ProductPage({
   const productFromStatic = allStaticProducts.find(
     (product) =>
       product.id === Number(productIdOrSlug) ||
-      product.title.toLowerCase().replace(/\s+/g, '-') === productIdOrSlug.toLowerCase()
+      product.title.toLowerCase().replace(/\s+/g, "-") ===
+        productIdOrSlug.toLowerCase()
   );
 
   if (productFromStatic) {
@@ -92,7 +93,10 @@ export default async function ProductPage({
           <Tabs />
         </div>
         <div className="mb-[50px] sm:mb-20">
-          <ProductListSec title="You might also like" data={relatedProductData} />
+          <ProductListSec
+            title="You might also like"
+            data={relatedProductData}
+          />
         </div>
       </main>
     );
@@ -105,7 +109,8 @@ export default async function ProductPage({
     (prod) =>
       prod.id.toString() === productIdOrSlug ||
       prod.id === Number(productIdOrSlug) ||
-      prod.title.toLowerCase().replace(/\s+/g, '-') === productIdOrSlug.toLowerCase()
+      prod.title.toLowerCase().replace(/\s+/g, "-") ===
+        productIdOrSlug.toLowerCase()
   );
 
   if (!dynamicProduct) {

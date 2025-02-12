@@ -6,9 +6,7 @@ import { makeStore } from "../lib/store";
 import { PersistGate } from "redux-persist/integration/react";
 import SpinnerbLoader from "@/components/ui/SpinnerbLoader";
 
-type Props = {
-  children: React.ReactNode;
-};
+type Props = { children: React.ReactNode };
 
 const Providers = ({ children }: Props) => {
   const { store, persistor } = makeStore();

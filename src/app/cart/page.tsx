@@ -122,7 +122,6 @@
 //   );
 // }
 
-
 "use client";
 
 import BreadcrumbCart from "@/components/cart-page/BreadcrumbCart";
@@ -139,9 +138,6 @@ import { RootState } from "@/lib/store";
 import { useAppSelector } from "@/lib/hooks/redux";
 import Link from "next/link";
 import CheckoutButton from "../../components/cart-page/CheckoutButton";
-
-
-
 
 export default function CartPage() {
   const { cart, totalPrice, adjustedTotalPrice } = useAppSelector(
@@ -227,9 +223,9 @@ export default function CartPage() {
                     Apply
                   </Button>
                 </div>
-                
-                <CheckoutButton/>
-                
+
+                <CheckoutButton />
+
                 {/* <Button
                   type="button"
                   className="text-sm md:text-base font-medium bg-black rounded-full w-full py-4 h-[54px] md:h-[60px] group"
